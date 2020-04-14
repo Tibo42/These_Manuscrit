@@ -1,0 +1,38 @@
+%PageDeGarde
+\phantomsection\pdfbookmark[part]{Conception et \'evaluation de kits robotiques p\'edagogiques.}{title}
+\input{Texte/Partie0/PageDeGarde.tex}
+\newpage
+\loadgeometry{myDefaultGeo}
+\ifx\BackGroundColor\undefined
+  \nopagecolor
+\else
+  \pagecolor{\BackGroundColor}
+\fi
+\pagestyle{plain}
+\toPrint
+
+%Resume
+\phantomsection\pdfbookmark[part]{R{\'e}sumer}{abstract}
+\input{Texte/Partie0/Resume.tex}
+\toPrint
+
+%Preface
+\fancyhead[L]{}
+\phantomsection\pdfbookmark[part]{Pr\'eface}{pre}
+\input{Texte/Partie0/Preface/input.tex}
+\clearpage
+
+%  Set style  ////////////////
+\pagestyle{myFancy}
+\setlength{\headheight}{14.5pt}
+\fancyhead[l]{}
+\fancyfoot[l,r]{}
+\fancyfoot[c]{\pageFont\thepage}
+\setstretch{1,3}
+%%%%%%  %%%%%%    
+
+%Table
+\phantomsection\pdfbookmark[part]{Tables}{tab}
+\input{Texte/Partie0/Table.tex}
+\label{sommaire}
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  

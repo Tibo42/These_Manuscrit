@@ -1,0 +1,539 @@
+\pdfobjcompresslevel 0
+%%%%%%  %%%%%%  %%%%%%  \\\\\\\  Set Print  ////////////////
+\def\print{1}
+\if\print1
+    \newcommand\open{openright}
+    \newcommand\toPrint{\clearpage{\pagestyle{empty}\cleardoublepage}}
+    \newcommand\reliure{.75cm}
+    \newcommand\locHead{RO,LE}
+    \newcommand\version{print version}
+\else
+    \newcommand\open{openany}
+    \newcommand\toPrint{\clearpage}
+    \newcommand\reliure{0cm}
+    \newcommand\locHead{R}
+    \newcommand\version{digital version}
+\fi
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%% 
+
+%%%%%%  %%%%%%  %%%%%%  \\\\\\\  Set Doc  ////////////////
+\documentclass[12pt,twoside,a4paper,french,\open]{report}
+\usepackage{morewrites} % need to make more \listof{}
+\usepackage[left=2.5cm,right=2.5cm,top=2.42cm,bottom=2.42cm,includeheadfoot]{geometry}
+\addtolength{\evensidemargin}{-\reliure}
+\addtolength{\oddsidemargin}{+\reliure}
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%% 
+
+%%%%%%  %%%%%%  %%%%%%  \\\\\\\  Set lang  ////////////////
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{eurosym}
+\usepackage[T1]{fontenc}
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%% 
+
+%%%%%%  %%%%%%  %%%%%%  \\\\\\\  Set style  ////////////////
+
+%%%%%%  Set fig tab cod  ////////////////
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\newcounter{subcode}
+\renewcommand{\thesubcode}{\alph{subcode}}
+\usepackage[procnames,final]{listings}
+\lstdefinelanguage{LDA}{
+    basicstyle=\ttfamily,        
+    morestring=[b][\color{black}]",
+    morekeywords=[1]{If, Then, Else, End, For, While, do},
+    keywordstyle=[1]{\color{red}\bfseries},
+    morekeywords=[2]{in},
+    keywordstyle=[2]{\color{red}},
+    morekeywords=[3]{start, end, interval},
+    keywordstyle=[3]{\color{blue}},
+}
+\lstset{language=Python, 
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    keywordstyle=\color{keywords},
+    commentstyle=\color{comments},
+    stringstyle=\color{py-red},
+    showstringspaces=false,
+    identifierstyle=\color{py-green},
+    procnamekeys={def,class},
+    literate={à}{{\`a}}1 {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 }
+\lstdefinelanguage{json}{
+    basicstyle=\ttfamily\small,
+    showstringspaces=false,
+    breaklines=true,
+    identifierstyle=\color{black},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+%%%%%%  Set page  ////////////////
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{setspace}
+\setlength{\abovedisplayshortskip}{0.1cm}
+\setlength{\belowdisplayshortskip}{0.1cm}
+\setlength{\abovedisplayskip}{0.1cm}
+\setlength{\belowdisplayskip}{0.1cm}
+\setlength{\belowcaptionskip}{-5pt}
+\renewcommand\thepage{\arabic{page}}
+%%%%%%  set margin  ////////////////
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+%%%%%%  Set par  ////////////////
+\titlespacing{\paragraph}{2\parindent}{0.75\parindent plus .2ex minus 2ex}{\parindent plus .2ex}
+\titleformat*{\paragraph}{\normalsize\bfseries\scshape}
+\titlespacing{\subparagraph}{\parindent}{\parskip}{1ex plus .2ex}
+\titleformat*{\subparagraph}{\small\scshape}
+%%%%%%  Set font  ////////////////
+%default Font
+\usepackage{libertine}
+\usepackage{libertinust1math}
+%number page
+\newcommand\pageFont{\fontfamily{pzc}\selectfont\itshape\large\vspace{0.25cm}}
+%introduction
+\newcommand\introFont{
+    \setstretch{1,28}
+    \fancyhead[\locHead]{\textsc{Introduction}}
+}
+%dedicace
+\newcommand\dediFont{\fontfamily{augie}\selectfont\setstretch{1,6}\centering}
+%citation
+\newcommand\citFont{\fontfamily{bch}\selectfont}
+%resumé de chap
+\newcommand\resFont{\setstretch{1,42}\setlength{\parindent}{20pt}\setlength{\parskip}{7pt}\itshape\large}
+%conclu de part
+\newcommand\conFont{
+    \pagestyle{myFancy}
+    \fancyhead{}
+    \fancyhead[\locHead]{\footnotesize{\textsc{Partie~\thepart~~---~~Conclusion}}}
+    \setstretch{1,36}\setlength{\parindent}{20pt}\setlength{\parskip}{5pt}
+}  
+% question intro
+\newcommand\QR[1]{\par\vspace{0.1cm}{\bfseries\itshape\hspace{.75\parindent}\gui{#1~?}}\vspace{0.15cm}\par}
+%sous chap
+\newcommand\subchapFont{
+    \titleformat{\section}[hang]
+        {\toPrint\vspace{15pt}\flushright\huge\bfseries}
+        {Sous-chapitre \arabic{chapter}.\includegraphics[width=0.7cm]{Figures/fontNumber/\arabic{section}.pdf}}
+        {0pt}
+        {\break\scshape}
+}
+%discussion
+\newcommand\discuFont{
+    \clearpage
+    \pagestyle{empty}
+    \renewcommand\myChapter[3][]{
+        \ifx&##1&
+            \chapter[##2##3]{\textsc{\lowercase{##2}##3}~~}
+        \else
+            \chapter[##2##1]{\textsc{\lowercase{##2}##3}~~}
+        \fi
+        \label{chap:\thepart-\thechapter}
+        \vspace{-0.85cm}
+    }
+    \renewcommand{\chaptertitlename}{Élément}
+    \titleformat{\chapter}[display]
+        {\vspace{-2.5cm}\raggedleft\Huge\bfseries}
+        {\chaptertitlename~\includegraphics[width=0.7cm]{Figures/fontNumber/\thechapter.pdf}~~}
+        {0pt}
+        {\raggedleft\huge\bfseries\scshape}
+}
+%conclu
+\newcommand\concluFont{
+    \pagestyle{myFancy}
+    \fancyhead{}
+    \fancyhead[\locHead]{\textsc{Conclusion et Perspectives}}
+}
+%annexe
+\newcommand\annexeFont{
+    \setcounter{section}{0}
+    \titleformat{\section}[hang]{\flushleft\bfseries}{\thesection~~}{0pt}{}
+    \titleformat{\subsection}[hang]{\flushleft\bfseries}{\thesubsection~}{0pt}{}
+    \renewcommand{\thesection}{\Roman{section}}
+    \renewcommand{\thesubsection}{\Roman{section}. \Roman{subsection}}
+    \mtcsetoffset{minitoc}{0pt}
+    \setlength{\mtcindent}{24pt}
+}
+%%%%%%  MyDefautStyle  ////////////////
+\newcommand\myDefautStyle{\setstretch{1,26}\setlength{\parindent}{15pt}}
+\let\defaultHrule\headrulewidth
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\pageFont\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{myFancy}{
+    \fancyhf{}
+    \fancyhead[RO]{\footnotesize{\textsc{PARTIE~\thepart~~---~~CHAPITRE~\thechapter.}}}
+    \fancyhead[LE]{\footnotesize{\Roman{part}.\rightmark}}
+    \renewcommand{\headrulewidth}{\defaultHrule}
+    \fancyfoot[\locHead]{\pageFont\thepage}
+}
+
+%%%%%%  MyItemStyle  ////////////////
+\newcommand\myItemStyle{\setstretch{1,0}\setlength{\parindent}{0pt}}
+\usepackage{enumitem}
+\renewcommand{\FrenchLabelItem}{\textbullet}
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}%noitemsep,
+%%%%%%  MyPhantom  ////////////////
+\newcommand\myPhantom[2]{\phantomsection\addcontentsline{toc}{#1}{#2}}
+%%%%%%  MyPart  ////////////////
+\titleformat{\part}[display]
+    {\fontsize{35}{42}\selectfont\filcenter\bfseries}
+    {\partname{} \thepart}
+    {0em}
+    {}
+\newcommand\myPart[1]{
+    \clearpage
+    \pagestyle{empty}
+    \part{#1}
+    \myDefautStyle
+}
+%%%%%%  MyChapter  ////////////////
+\titleformat{\chapter}[display]
+    {\raggedleft\fontsize{30}{38}\selectfont\bfseries}
+    {\chaptertitlename~\includegraphics[width=1cm]{Figures/fontNumber/\thechapter.pdf}~~}
+    {20pt}
+    {\raggedleft\fontsize{28}{30}\selectfont\bfseries\scshape}
+\newcommand\myChapter[3][]{
+    \clearpage
+    \pagestyle{empty}
+    \ifx&#1&
+        \chapter[#2#3]{\textsc{\lowercase{#2}#3}~~}
+    \else
+        \chapter[#2#1]{\textsc{\lowercase{#2}#3}~~}
+    \fi
+    \label{chap:\thepart-\thechapter}
+    \setstretch{1,1}
+    \minitoc
+    \toPrint
+    \pagestyle{myFancy}
+    \myDefautStyle
+}
+%%%%%%  MyResum  ////////////////
+\newenvironment{resumChap}[1][.84]{%
+    \pagestyle{plain}
+    \vspace{2.42cm}\strut\newline
+    {\fontsize{28}{40}\selectfont\bfseries\itshape Résumé}
+    \myPhantom{paragraph}{Résumé}
+    \vspace{1.42cm}\newline
+    \strut\hfill
+    \begin{minipage}{#1\linewidth}
+    \resFont
+}{%
+    \end{minipage}
+    \hfill\strut
+    \toPrint
+}
+%%%%%%  MyConclu  ////////////////
+\usepackage{fmtcount}
+\newenvironment{concluPart}{%
+    \clearpage
+    \pagestyle{empty}
+    \chapter*{\vspace{1cm}Conclusion\\ de la \ordinalstring{part}[f] partie}
+    \addstarredchapter{\texorpdfstring{\hfill\textit{Conclusion Partie \thepart~~~~}}{Conclusion Partie \thepart}}\label{chap:\thepart-0}
+    \toPrint
+    \conFont
+}{%
+    \clearpage
+}
+%%%%%%  NoColorUrl  ////////////////
+\newcommand\noColorHref[2]{\href{#1}{\textcolor{myBlack}{#2}}}
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  
+
+%%%%%%  %%%%%%  %%%%%%  \\\\\\\  Set other  ////////////////
+
+%%%%%%  PDF to Annexe  ////////////////
+\usepackage{pdfpages}
+\newcommand\PDFannexeOne[4][0.7]{\includepdf[frame,scale=#1,pages=1,pagecommand={#3\label{pdf:#2}}]{#4}}
+\newcommand\PDFannexe[4][0.7]{
+    \PDFannexeOne[#1]{#2}{#3}{#4}
+    \includepdf[frame,width=\linewidth,pages=2-,pagecommand={}]{#4}
+}
+\newcommand\EuroGraph[2]{
+    \phantomsection\pdfbookmark[paragraph]{#1}{#2}
+    \vfill\noindent\footnotesize{#1}\newline\vspace{-0.2cm}
+    ~
+    \includegraphics[width=0.89\linewidth]{Annexe/euro382/#2.pdf}\label{#2}\\
+}
+%%%%%%  break url  ////////////////
+\usepackage[hyphens]{url}
+%%%%%%  Set clor  ////////////////
+\usepackage{xcolor}
+%text color
+\definecolor{myBlack}{rgb}{0.042,0,0}
+%background
+\definecolor{antiflashColor}{rgb}{0.95, 0.95, 0.96}
+%\newcommand\BackGroundColor{antiflashColor}
+%links color
+\definecolor{red-link}{rgb}{.42,0,0}
+%url color
+\definecolor{blue-url}{rgb}{0,0,.42}
+%abr color
+\definecolor{abr-color}{rgb}{0.36, 0.22, 0.33}
+%cite color
+\definecolor{red-cite}{rgb}{0.53, 0.15, 0.34}
+%citation box color
+\definecolor{box-gray}{rgb}{0.97, 0.97, 1.0}
+\definecolor{text-gray}{gray}{0.17}
+%python color
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{py-red}{RGB}{160,0,0}
+\definecolor{py-green}{RGB}{0,150,0}
+%json color
+\colorlet{punct}{red!60!black}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%
+
+%%%%%%  %%%%%%  %%%%%%  \\\\\\\  Set hyper ref  ////////////////
+\usepackage{hyperref}
+\hypersetup{
+  pdfauthor     = {Thibault DESPREZ},
+  pdftitle      = {T.DESPREZ, Manuscrit de Th\`ese (\version)},
+  pdfsubject    = {Conception et \'evaluation de kits robotiques p\'edagogiques.},
+  pdfkeywords   = {Robotics Kit, Robot, Poppy, ErgoJr, Visual Programming, Snap!, Python, Digital Science},
+  pdfproducer   = {Latex (compiled \today)},
+  pdfcreator    = {pdflatex},
+  bookmarksopen = false,
+  bookmarksdepth= 10,
+  linkcolor     = red-link,
+  breaklinks    = true,
+  citecolor     = red-cite,
+  urlcolor      = blue-url,
+  final         = true,
+  colorlinks
+  }
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  
+
+%%%%%%  Set section  //////////////// after hyperref!
+\makeatletter
+\@addtoreset{chapter}{part}
+\@addtoreset{footnote}{page}
+\@addtoreset{subcode}{page}
+\makeatother
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%
+
+%%%%%%  %%%%%%  %%%%%%  \\\\\\\  Set other  ////////////////
+
+%%%%%%  Set PDF table  ////////////////
+\usepackage[numbered]{bookmark}
+
+%%%%%%  bib url annexe  ////////////////
+\usepackage{multibib}
+\newcites{Url}{Webographie}
+
+%%%%%%  MyCite  ////////////////
+%bib
+\newcommand\citeB[1]{{\footnotesize\cite{#1}}}
+%url
+\newcommand\citeURL[1]{{\footnotesize\citeUrl{#1}}}
+%annexe
+\newcommand\citeA[1]{{\footnotesize(\textit{cf.}~\textsc{Annexe}~\ref{#1}, \textit{p.}\pageref{#1})}} 
+%figure
+\newcommand\citeF[1]{{\footnotesize(\textit{cf.}~\textsc{Figure}~\ref{#1}, \textit{p.}\pageref{#1})}} 
+%table
+\newcommand\citeT[1]{{\footnotesize(\textit{cf.}~\textsc{Table}~\ref{#1}, \textit{p.}\pageref{#1})}} 
+%code
+\newcommand\citeC[1]{{\footnotesize(\textit{cf.}~\textsc{Prog.}\ref{#1}, \textit{p.}\pageref{#1})}}
+%section
+\newcommand\citeS[1]{{\footnotesize(\textit{cf.}~\textsc{Section}~\ref{#1}, \textit{p.}\pageref{#1})}}
+%rapport interne
+\newcommand\citeR[1]{#1~\acrshort{RI}}
+%question - in - part3chap3 euro382
+\newcommand\citeQ[1]{{\footnotesize(\textit{q.}#1, page~\pageref{QA#1})}}  
+
+%%%%%%  Set glossaries  ////////////////
+\usepackage[acronym]{glossaries}
+\newglossary[cit]{citation}{gls}{glo}{citation}
+\makeglossaries
+\setacronymstyle{short-long}
+\renewcommand{\glstextformat}[1]{\textcolor{myBlack}{#1}}
+\renewcommand{\acronymfont}[1]{\textcolor{abr-color}{#1}}
+\newcommand\CapAcro[1]{\textcolor{abr-color}{\scshape#1}}
+%abreviation
+\loadglsentries{Bib/glossaries.tex}
+\newglossarystyle{mystyleAcr}{
+    \setglossarystyle{list}%
+    \renewcommand*{\glossentry}[2]{%
+    \raggedleft\setstretch{0,9}\item[\glsentryitem{##1}%
+    \glstarget{##1}{\glossentryname{##1}}].\dotfill
+    {\small\glossentrydesc{##1}\glspostdescription}\\{\scriptsize\textit{Présent en page(s):~}##2}\vspace{0.142cm}}%
+}
+%citation
+\loadglsentries{Bib/citation.tex}
+\newglossarystyle{mystyleCit}{
+    \setglossarystyle{list}
+    \renewcommand*{\glossentry}[2]{
+    \raggedleft\item[\glsentryitem{##1}
+    \glstarget{##1}{\glossentryname{##1}}]
+    \glossentrysymbol{##1}~\dotfill~##2~}
+}
+
+%%%%%%  MyCitation  ////////////////
+\usepackage[most]{tcolorbox}
+\newtcolorbox{tcbremark}{
+  breakable,
+  enhanced jigsaw,
+  oversize,
+  rightrule     = 0pt,
+  toprule       = 0pt,
+  bottomrule    = 0pt,
+  colback       = box-gray,
+  arc           = 4pt,
+  outer arc     = 0pt,
+  title         = {},
+  title style   = {white},
+  fonttitle     = \color{myBlack}\bfseries,
+  titlerule     = 0pt,
+  bottomtitle   = 2pt,
+  top           = 10pt,
+  bottom        = 0pt,
+  left          = 7pt,
+}
+\newcommand\citeAtion[1]{
+  \vspace{-0.5cm}
+  \begin{changemargin}{1.17cm}{\rightmargin}
+    \begin{quotation}
+      \begin{tcbremark}
+        \color{text-gray}\setstretch{1,3}
+        \citFont
+        ~~~\og\textit{\glossentrydesc{#1}}~\fg~{\small\glsentrysymbol{#1}}
+        \newline\glspl{#1}
+        \vspace{0.142cm}\strut\hfill{\small ---~\glossentryname{#1}~---~}
+      \end{tcbremark}
+    \end{quotation}
+  \end{changemargin}\par
+}
+
+%%%%%%  Table des codes  ////////////////
+\usepackage{float}
+\newfloat{code}{thp}{locod}
+\floatname{code}{\textit{Prog.}}
+\renewcommand{\thecode}{\thechapter.\arabic{code}~}
+
+%%%%%%  Mini sommaire  ////////////////
+\usepackage{minitoc}
+\dominitoc
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{3}
+\setcounter{minitocdepth}{2}
+
+%%%%%%  MyRacourci  ////////////////
+\usepackage{afterpage}
+\input{Texte/myCmd.tex}
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%% 
+
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%
+%  _____   _____   _____   _   __   _        _____   _____   _____   _   _       ___  ___   _____   __   _   _____   %
+% |  _  \ | ____| /  ___| | | |  \ | |      |  _  \ /  _  \ /  ___| | | | |     /   |/   | | ____| |  \ | | |_   _|  % 
+% | |_| | | |__   | |     | | |   \| |      | | | | | | | | | |     | | | |    / /|   /| | | |__   |   \| |   | |    %
+% |  _  { |  __|  | |  _  | | | |\   |      | | | | | | | | | |     | | | |   / / |__/ | | |  __|  | |\   |   | |    %
+% | |_| | | |___  | |_| | | | | | \  |      | |_| | | |_| | | |___  | |_| |  / /       | | | |___  | | \  |   | |    %
+% |_____/ |_____| \_____/ |_| |_|  \_|      |_____/ \_____/ \_____| \_____/ /_/        |_| |_____| |_|  \_|   |_|    %
+%                                                                                                                    %
+%%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%  %%%%%%
+\color{myBlack}
+\begin{document}
+\sloppy
+\binoppenalty 10000
+\relpenalty 10000
+\savegeometry{myDefaultGeo}
+\setcounter{page}{1}
+% Préambule  ////////////////
+\input{Texte/Partie0/input.tex}
+%  _________   __    __   _________
+% |____  ___| |  \  /  | |____  ___|
+%     | |     |_  \/  _|     | |    
+%     | |       \    /       | |    
+%     | |       /    \       | |    
+%     |_|      |__/\__|      |_|    
+% 
+\part*{Introduction}\phantomsection\label{chap:-0}
+\pagestyle{myFancy}
+\myDefautStyle
+\introFont
+\input{Texte/Partie0/Introduction}
+\myPart{État de l'art}
+\input{Texte/Partie1/input.tex}
+\myPart{Conception}
+\input{Texte/Partie2/input.tex}
+\myPart{Évaluation}
+\input{Texte/Partie3/input.tex}
+\myPart{Discussions}
+\discuFont
+\input{Texte/Partie4/input.tex}
+\part*{{Conclusion et perspectives}}
+\concluFont
+\input{Texte/Partie5/input.tex}
+\clearpage
+\fancyhead{}
+%  _____   _   _____  
+% |  _  \ | | |  _  \ 
+% | |_| | | | | |_| | 
+% |  _  { | | |  _  { 
+% | |_| | | | | |_| | 
+% |_____/ |_| |_____/ 
+%
+\fancyhead[\locHead]{\textsc{Bibliographie}}
+\myPhantom{part}{\texorpdfstring{\underline{Bibliographie}}{Bibliographie}}
+\bibliographystyle{alpha}
+\bibliography{Bib/bib.bib}
+\toPrint
+%  _          __  _____   _____   _  
+% | |        / / | ____| |  _  \ | | 
+% | |  __   / /  | |__   | |_| | | | 
+% | | /  | / /   |  __|  |  _  { | | 
+% | |/   |/ /    | |___  | |_| | | | 
+% |___/|___/     |_____| |_____/ |_| 
+%
+\fancyhead[\locHead]{\textsc{Webographie}}
+\myPhantom{part}{\texorpdfstring{\underline{Webographie}}{Webographie}}
+\bibliographystyleUrl{plain}
+\bibliographyUrl{Bib/url.bib}
+\clearpage
+\nopagecolor
+\input{Texte/Partie0/LastPage.tex}
+%      ___   __   _   __   _   _____  __    __  _____   _____  
+%     /   | |  \ | | |  \ | | | ____| \ \  / / | ____| /  ___/ 
+%    / /| | |   \| | |   \| | | |__    \ \/ /  | |__   | |___  
+%   / / | | | |\   | | |\   | |  __|    }  {   |  __|  \___  \ 
+%  / /  | | | | \  | | | \  | | |___   / /\ \  | |___   ___| | 
+% /_/   |_| |_|  \_| |_|  \_| |_____| /_/  \_\ |_____| /_____/ 
+%
+\annexeFont
+\input{Annexe/input.tex}
+
+
+%  _____   __   _   _____  
+% | ____| |  \ | | |  _  \ 
+% | |__   |   \| | | | | | 
+% |  __|  | |\   | | | | | 
+% | |___  | | \  | | |_| | 
+% |_____| |_|  \_| |_____/ 
+%
+\clearpage
+\input{Texte/Partie0/LastPage.tex}
+\end{document}

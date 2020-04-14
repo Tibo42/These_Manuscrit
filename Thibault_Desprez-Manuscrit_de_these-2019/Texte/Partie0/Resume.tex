@@ -1,0 +1,78 @@
+%4000 craractere max
+\newcommand\motscle{Kit robotique, Plateforme Robotique Poppy, Robot ErgoJr, Conception, Évaluation}
+\newcommand\resume{
+Le potentiel des activités pédagogiques robotiques, et en particulier le rôle de l’instanciation physique de ces activités, dans lesquelles la manipulation d’objets numériques est centrale, reste encore à confirmer scientifiquement; en particulier en matière d'utilisabilité réelle en classe et de leur impact sur l’efficacité des apprentissages et sur l’engagement motivationnel des élèves.
+Par ailleurs, il semble que ces impacts dépendent aussi de la manière dont ces outils pédagogiques sont utilisés (et détournés) par l'enseignant en classe, ainsi que par le contexte scolaire lui-même.%
+Pour ces raisons, ce manuscrit propose dans un premier temps d'articuler un état de l'art issu de champs disciplinaires variés, notamment scientifiques, comme l'informatique et la robotique, l'IHM, la psychologie, les sciences cognitives, ou encore les sciences de l'éducation; mais aussi, d'introduire des éléments d'éthique et des enjeux sociétaux. Cette partie propose également de définir notre milieu: les acteurs (utilisateurs cibles: enseignants et élèves), les prescriptions (objectifs et besoins des programmes officiels), les réalités du terrain (les contraintes: budget, matériel, réforme, formation, \etc). 
+Dans un deuxième temps, nous présentons les éléments (hardware, software et ressources) constituant le kit robotique pédagogique Poppy ErgoJr; co-créé et testé par des enseignants issus principalement des sections ICN (seconde) et ISN (terminale) d'Aquitaine et, les membres du projet Poppy Éducation (Inria-BSO). Leur processus de création sera également présenté, tout comme les activités créées pour les besoins des expérimentations présentées dans la partie suivante.
+Mais avant celle-ci, nous montrerons 2~exemples de dérivations du kit: PoppyDiplo et PoppyDragster, dont le 2\nd aboutit à une expérimentation portant sur l'impact des ressources documentaires sur le sentiment de contrôle de l'élève (relevé par le IMI) lors d'une tâche de construction collaborative d'un robot. Une 2\nde expérience, avec ErgoJr, portant sur le formalisme des ressources fournies et leur impact motivationnel sera présentée. 
+Trois autres thématiques seront abordées: l'utilisabilité mesurée dans un cadre longitudinal et écologique (via le SUS et l'AttrakDiff); l'acceptabilité mesurée via l'Euro382, et un questionnaire innovant, étudiant l'impact de la nomination d'un objet sur la perception de celle-ci; et, l'acquisition de connaissances (via des qcm).
+Une étude qualitative est également proposée dans cette partie, entre autres, au travers d'une étude de cas portant sur l'appropriation du dispositif par 10 enseignants.
+Nous finirons par une discussion ayant pour objet les questions soulevées en introduction, et ouvrant sur la conclusion générale de ce manuscrit qui rappellera les principaux enseignements de ce travail et ses perspectives d'avenir.
+}
+\newcommand\keysword{Robotics Kit, Poppy Robotics Platforme, ErgoJr Robot, Conception, Evaluation}
+\newcommand\abst{
+The potential of robotic educational activities, and in particular the role of the physical instantiation of these activities, in which the manipulation of digital objects is central, remains to be confirmed scientifically; especially in terms of real classroom usability and their impact on the effectiveness of learning and the motivational engagement of students. Moreover, it seems that these impacts also depend on the way in which these pedagogical tools are used (and diverted) by the teacher in class, as well as by the school context itself. For these reasons, this manuscript proposes in a first step in articulating a state of art from a variety of disciplinary fields, notably scientific, such as computer science and robotics, IHM, psychology, cognitive sciences, or the sciences of education ; but also to introduce elements of ethics and societal issues. This part also proposes to define our environment: the actors (target users: teachers and pupils), the prescriptions (objectives and needs of the official programs), the realities of the field (the constraints: budget, material, reform, training, \etc). In a second step, we will present the elements (hardware, software and resources) constituting the educational robotics kit Poppy ErgoJr; co-created and tested by teachers mainly from high school sections of Aquitaine and the members of the Poppy Education project (Inria-BSO). Their creation process will also be presented, as will the activities created for the purposes of the experiments presented in the following section. But before this one, we will show two examples of derivations of the kit: PoppyDiplo and PoppyDragster, whose second ended with an experimentation on the impact of the documentary resources on the feeling of control of the pupil (measured by the IMI) during a task of collaborative construction of a robot. A second experience, with ErgoJr, on the formalization of the resources provided and their motivational impact will be presented. Three other themes will be tackled: usability measured in a longitudinal and ecological framework (via the SUS and AttrakDiff); acceptability measured via Euro382, and an innovative questionnaire, studying the impact of the appointment of an object on the perception of this one; and the acquisition of knowledge (via qcm). A qualitative study is also proposed in this part, among others, through a case study on the appropriation of device by 10 teachers. We will end with a discussion of the questions raised in the introduction, and opening on the general conclusion of this manuscript which will recall the main lessons of this work and its future prospects.
+}
+%1000 caractere max
+\newcommand\vulga{
+L'enseignement des sciences du numérique est un enjeu crucial; il sera déterminant sur les usages et choix de société qui seront effectués dans ce domaine. Cet enseignement se fait aujourd'hui, entre autres, à l'école. Et, les dispositifs pour ces apprentissages pullulent, sans pour autant avoir fait l'objet d'étude sur leurs usages et intérêts réels en classe. Cet ouvrage a pour objet de rassembler différents éléments théoriques et pratiques à prendre en considération pour appréhender l'impact de l'introduction de la robotique pédagogique dans l'environnement scolaire. Un second objectif est d'offrir aux enseignants, des clés de lecture pour évaluer la pertinence des objets, dits pédagogiques, qui leur sont proposés; et pour mieux estimer les moyens à leur disposition pour se les approprier. Une des conclusions de ce travail est que l'enseignant est le déterminant principal pour la bonne intégration de ces dispositifs et que cela passe par une bonne appropriation de ces technologies.
+}
+\newcommand\pop{
+The teaching of digital sciences is a crucial issue; it will be decisive on the uses and society's choices that will be made in this field. This teaching is done today, among others, at school. And, the devices for these learnings abound, without having been the subject of study on their uses and real interests in class. The purpose of this book is to bring together different theoretical and practical elements to consider in order to understand the impact of the introduction of educational robotics in the school environment. A second objective is to provide teachers with reading keys to evaluate the relevance of the so-called educational objects offered to them; and to better estimate the means at their disposal to appropriate them. One of the conclusions of this work is that the teacher is the main determinant for the proper integration of these devices and that it requires a good appropriation of these technologies.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% display
+
+\phantomsection\pdfbookmark[section]{R{\'e}sumer}{resumFR}
+\begin{center}
+{\textbf{\Large Conception et évaluation\\\vspace{0.1cm}de kits robotiques pédagogiques.}}\\\vspace{0.5cm}    
+\end{center}
+
+\textbf{\centering\large\underline{R\'esum\'e}~:} \\\vspace{0.25cm}
+
+{\myDefautStyle\resume}\\
+\vspace{0.5cm}\\
+{\textbf{\underline{Mots cl\'{e}s}~:\\\vspace{0.1cm}\motscle}}\\
+\phantomsection\pdfbookmark[paragraph]{Mots cl\'{e}s:}{motscle}
+\phantomsection\pdfbookmark[subparagraph]{Kits Robotiques}{cle1}
+\phantomsection\pdfbookmark[subparagraph]{Platforme Robotique Poppy}{cle2}
+\phantomsection\pdfbookmark[subparagraph]{ErgoJr Robot}{cle3}
+\phantomsection\pdfbookmark[subparagraph]{Conception}{cle4}
+\phantomsection\pdfbookmark[subparagraph]{{\'E}valuation}{cle5}
+\toPrint
+
+\phantomsection\pdfbookmark[section]{Abstract}{resumEn}
+\begin{center}
+{\Large\textbf{Design and evaluation\\\vspace{0.1cm}of educational robotic kits.}}\\\vspace{0.5cm}    
+\end{center}
+
+\textbf{\large\underline{Abstract}~:}\\\vspace{0.25cm}
+
+{\myDefautStyle\abst}\\
+\vspace{0.5cm}\\
+{\textbf{\underline{Keywords}~:\\\vspace{0.1cm}\keysword}}\\
+\phantomsection\pdfbookmark[paragraph]{Keywords:}{keywords}
+\phantomsection\pdfbookmark[subparagraph]{Robotics Kit}{key1}
+\phantomsection\pdfbookmark[subparagraph]{Poppy Robotics Platforme}{key2}
+\phantomsection\pdfbookmark[subparagraph]{ErgoJr Robot}{key3}
+\phantomsection\pdfbookmark[subparagraph]{Conception}{key4}
+\phantomsection\pdfbookmark[subparagraph]{Evaluation}{key5}
+\toPrint
+
+\phantomsection\pdfbookmark[section]{R{\'e}sumer vulgaris{\'e}}{resumVulga}
+\vspace{3cm}\strut\\
+\begin{center}
+
+{\textbf{\Large Résumé de thèse vulgarisé}}\\\vspace{0.45cm}    
+
+\begin{minipage}{0.85\linewidth}
+{\myDefautStyle\vulga}
+\end{minipage}\vspace{1cm}\\
+
+{\textbf{\Large Thesis Summary popularized}}\\\vspace{0.35cm}    
+
+\begin{minipage}{0.85\linewidth}
+{\myDefautStyle\pop}
+\end{minipage}\vspace{1cm}\\
+\end{center}
+\clearpage

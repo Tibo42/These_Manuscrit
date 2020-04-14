@@ -1,0 +1,87 @@
+%  annexePage  ////////////////
+\input{Annexe/jacket.tex}
+\newpage
+\strut
+\vfill
+\setstretch{1,1}
+\addstarredchapter{Sommaire}
+\minitoc
+\vfill
+\strut
+\newpage
+%%%%%%  %%%%%%
+
+%  Set style  ////////////////
+\pagestyle{myFancy}
+\fancyhead{}
+\fancyhead[\locHead]{\footnotesize{\textsc{ANNEXES~\rightmark}}}
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thesubsection}{\Alph{section}.~\arabic{subsection}}
+\newgeometry{left=1.5cm,right=1.5cm,top=1.25cm,bottom=1cm,includeheadfoot}
+\fancyhfoffset[le,re]{0pt}
+\setlength{\headheight}{13pt}
+\setlength{\footskip}{11pt}
+\setstretch{1}
+%%%%%%  %%%%%%
+
+%  Input  ////////////////
+
+%coerle
+\PDFannexe[0.75]{COERLE}{\section{Dossier COERLE}}{Annexe/coerle/COERLE_dossier_de_demande_autorisation.pdf}
+%consentement
+\PDFannexe[0.7]{consentement}{\section{Formulaire de consentement éclairé}}{Annexe/coerle/annexe2_Formulaire_de_consentement_eclaire.pdf}
+%contrat collab
+\PDFannexe[0.7]{contrat}{\section{Contrat de collaboration avec les lycées}}{Annexe/coerle/annexe3_Contrat_de_collaboration.pdf}
+
+%établissement
+\PDFannexe[0.7]{etablissements}{\section{Établissements scolaires partenaires}}{Annexe/autre/Etablissements.pdf}
+
+%protocole
+\PDFannexeOne[0.7]{protocole}{\section{Protocole écologique}}{Annexe/autre/Protocole_2018.pdf}
+
+%EME
+\PDFannexe[0.65]{EME}{\section{Questionnaires} \subsection{Questionnaire EME}}{Annexe/survey/EME.pdf}
+%IMI
+\PDFannexe[0.75]{IMI}{\subsection{Questionnaire IMI}}{Annexe/survey/IMI.pdf}
+%SPP
+\PDFannexe[0.75]{SPP}{\subsection{Questionnaire SPP}}{Annexe/survey/SPP.pdf}
+%EME
+\PDFannexe[0.75]{POPS}{\subsection{Questionnaire POPS}}{Annexe/survey/POPs.pdf}
+%QAE
+\PDFannexe[0.75]{QAE}{\subsection{Questionnaire QAE}}{Annexe/survey/QAE.pdf}
+
+%SUS
+\PDFannexe[0.75]{SUS}{\subsection{Questionnaire SUS}}{Annexe/survey/SUS.pdf}
+%AttrakDiff
+\PDFannexe[0.75]{ATT}{\subsection{Questionnaire ATT}}{Annexe/survey/AttrakDiff.pdf}
+
+%NARS
+\subsection{Questionnaire NARS}
+\input{Annexe/survey/nars.tex}
+%euro382
+\PDFannexe[0.75]{EURO382}{\subsection{Questionnaire EURO382}}{Annexe/survey/Euro382.pdf}
+
+%Euro382_result
+\input{Annexe/euro382/input.tex}
+
+%activité
+%dance
+\PDFannexe[0.6]{act_dance}{\section{Activité Danse} \subsection{Activité Danse (version pour visualisateur)}}{Annexe/activite/dance.pdf}
+\PDFannexe[0.7]{qcm-pre_dance}{\subsection{Activité Danse questionnaire PRE}}{Annexe/survey/Desprez-Demengeat_qcm_pre-dance.pdf}
+\PDFannexe[0.7]{qcm-post_dance}{\subsection{Activité Danse questionnaire POST}}{Annexe/survey/Desprez-Demengeat_qcm_post-dance.pdf}
+%chamboul
+\PDFannexe[0.7]{act_chamboul}{\section{Activité Chamboule-tout}}{Annexe/activite/chamboul.pdf}
+%cameleon
+\PDFannexe[0.75]{act_cameleon}{\section{Activité Camélèon}}{Annexe/activite/cameleon.pdf}
+%poule
+\PDFannexe[0.65]{act_poule}{\section{Activité Poule} \subsection{Activité Poule}}{Annexe/activite/poule.pdf}
+\PDFannexe[0.75]{qcm_poule}{\subsection{Activité Poule questionnaire POST}}{Annexe/survey/Desprez-qcm_poule.pdf}
+%dragster
+\PDFannexe[0.6]{act_dragster}{\section{Poppy Dragster} \subsection{Activité de découverte Poppy Dragster}}{Annexe/activite/Gilliard-dragster_activity_snap.pdf}
+\PDFannexe[0.7]{notice_dragster_lin}{\subsection{Notice de montage linaire Poppy Dragster}}{Annexe/autre/Gilliard-doc_dragster_AC.pdf}
+\PDFannexe[0.7]{notice_dragster_mod}{\subsection{Notice de montage modulaire Poppy Dragster}}{Annexe/autre/Gilliard-doc_dragster_DC.pdf}
+%primitive demo
+\section{Tutoriel primitives}
+\label{pdf:demo.py}
+\lstinputlisting[language=Python,basicstyle=\scriptsize]{Annexe/activite/demo.py}
+%

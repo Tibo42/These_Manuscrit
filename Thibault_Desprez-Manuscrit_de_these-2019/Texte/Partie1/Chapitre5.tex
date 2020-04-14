@@ -1,0 +1,149 @@
+%PART_1_CHAP_5
+\myChapter{C}{urriculum robotique}
+%WAIT a Review ok~1
+\begin{resumChap}
+Ce 5\ieme chapitre nous donnera l'occasion d'aborder l'interdisciplinarité inhérente aux technologies robotiques.\par%
+Nous aborderons d'abord, les concepts clés issus de l'informatique nécessitant d'être enseigné pour l'usage de la robotique.\par%
+Nous présenterons, les outils existant disponibles pour le design et la production d'activités pédagogiques incluant des dispositifs robotiques.\par%
+Nous profiterons également de ce chapitre pour présenter une définition de la notion de robot.\par%
+Et enfin, nous rappellerons les enjeux de l'apprentissage des sciences du numérique notamment au travers de l'usage de l'\cro{objet numérisé}.
+\end{resumChap}{}
+\section{L'interdisciplinarité}\label{sec:pluri_bot}
+    \subsection{Un objet à la croisée de nombreuses disciplines}
+        L'histoire de la robotique en tant que discipline à part entière commence à l'aube de l'informatique, dans les années 1960. Les possibilités d'utilisation interactive de l'ordinateur dans les écoles ont été rendues possibles après l'invention du temps de partage\footnote{Temps de partage, aussi appelé pseudo-parallélisme, c'est une approche permettant de simuler le partage par plusieurs utilisateurs de temps processeur}. Historiquement, Wallace Feurzeig a été l'un des premiers à enseigner \tiret{aux enfants} les problèmes d'arithmétique, d'algèbre et de trigonométrie en codant les programmes en TELCOMP\footnote{un des nouveaux langages de programmation interactive de haut niveau de l'époque(1965)}. 
+        Mais c'est l'innovation dans les domaines de l'électronique et de la mécanique qui a permis de construire des robots moins coûteux et de les rendre ainsi accessibles à des populations inexpérimentées et curieuses. 
+        Les robots éducatifs sont utilisés dans les salles de classe et à la maison à des fins d’apprentissage ou de divertissement. Et, puisque la technologie est de plus en plus présente dans nos vies, avoir des notions de programmation devient une connaissance clé à enseigner.
+        Mais distinguer les sujets relevant spécifiquement de la robotique et ceux y étant simplement traverse n'est pas trivial.
+    %TODO?
+    %\subsection{Un objet d'étude à part entière}
+    %\subsection{Un outil universel}
+    %\subsection{Un support de réflexion}
+\section{Les concepts clés}\label{sec:concept}
+    \paragraph{Un Langage}
+        Les langages de programmation ont pour objectif \tiret{comme pour toutes les langues} d'exprimer une certaine représentation du monde afin de pouvoir la communiquer à autrui et, en ce sens, ils ne diffèrent donc pas des langages naturels tel que le français, l'anglais, \etc ou les langages formels tels que les mathématiques.
+        Dans le contexte particulier de l'informatique, ces langages ont pour objet de traduire la pensée humaine en instruction appréhendable par la machine: un fichier binaire compilé à partir du code source (parfois, via un interpréteur comme pour Python). 
+        Ces types de langages doivent donc permettre de décrire les structures des données qui seront manipulées par l'appareil informatique et quelles seront les manipulations. 
+        Plusieurs éléments servent à définir ces langues: d'abord l'alphabet et la grammaire (\ie les règles de syntaxe) admissible, puis le vocabulaire et autres identifiants marquant les structures et procédures usuelles.
+        Une fois la langue définie, elle permet de manipuler différentes notions telles que les instructions, les variables, les types, et les procédures ou fonctions, qui peuvent être utilisées comme primitives pour développer des algorithmes.
+    \subsection{Éléments de programmation}
+        \paragraph{variable}
+            Elles peuvent être statiques ou dynamiques \cad que leur valeur et éventuellement, leur type (\eg texte, numérique, objet, \etc) peut \tiret{ou non} évoluer au cours de l'exécution du programme. Une variable est donc composée d'une valeur possédant un certain type, et d'un identificateur permettant son appel, et sa modification dans le cas d'une variable dynamique.
+            Dans le cas des variables statiques, ou pour les variables n'ayant pas vocation à être modifiées durant l'exécution (\eg la taille d'un plateau de jeu ou la difficulté sélectionnée pour une partie donnée), on parle de constante. 
+            Chaque variable possède son propre espace mémoire réservé permettant d'y stocker sa valeur qui est localisable grâce à son identificateur. 
+            Pédagogiquement, c'est l'une des premières notions à intégrer; pour  l'appréhender de manière conceptuelle, une métaphore pertinente est celle de \cro{la boîte} possédant une étiquette servant à l'identifier parmi les autres boîtes et contenant un élément pouvant être consulté, remplacé ou modifié. De plus, on peut filer cette métaphore avec des armoires, des commodes et autres, afin d'aborder des structures plus complexes telles que les listes: suite indexée de variables, les piles, \etc.
+            De manière technique, chaque langage offre un jeu de caractéristiques spécifiques pour les variables.
+            \subparagraph{Exemple}
+                une variable en C++ aura sept caractéristiques:
+                \begin{enumerate}\myItemStyle
+                    \item son nom \cad sous quel nom est déclarée la variable;
+                    \item son type, c'est la convention d'interprétation de la séquence de bits qui constitue la variable. Le type de la variable spécifie aussi la longueur de cette séquence (8 bits, 32 bits, 64 bits)
+                    \item sa valeur, c'est la séquence de bits elle-même, elle ne peut varier au cours du temps si on utilise le mot-clef const
+                    \item son adresse, c'est l'endroit dans la mémoire où elle est stockée
+                    \item sa portée, c'est la portion de code source où elle est accessible, par exemple, la portée d'une variable (non globale) en C s'entend de sa définition à la fin du bloc où elle est définie.
+                    \item sa visibilité, c'est un ensemble de règles qui fixe qui peut utiliser la variable (exemple: mots-clefs public, private, protected, ou le masquage d'une variable par une autre)
+                    \item sa durée de vie, c'est le temps d'exécution pendant laquelle la variable existe. En C et en C++ une variable contenue dans un bloc de code limité par des accolades \cro{{}} possède la durée de vie correspondant au temps d'exécution de ce bloc. Il ne faut pas confondre la durée de vie d'une variable locale et sa visibilité, ou sa portée: une variable hors de portée (\ie masquée par une autre), existe toujours.
+                \end{enumerate}
+            %Toutefois on peut trouver des langages qui restreignent ces caractéristiques:
+            %le PHP ne possède pas un typage fort, comme une grande partie des langages scripts;
+            %le Prolog ne permet pas qu'une variable change de valeur au cours du temps une fois la première identification faite;
+            %la visibilité de la variable est public par défaut en C;
+            %la notion de pointeur en C++ est remplacée par la notion de référence en Java, en Prolog l'adresse d'une variable n'est pas accessible au programmeur.
+        \paragraph{Boucle et condition}
+            Une instruction conditionnelle est une structure de contrôle d'un langage de programmation qui effectue différentes actions en fonction de l'évaluation d'une condition booléenne. La plus commune de ces structures est la fonction si–alors(–sinon); bien que la syntaxe varie quelque peu selon le langage, elle se résume dans le pseudocode~\ref{cod:structure}\ref{cod:ifThen}.
+            \begin{code}
+                \begin{minipage}{0.50\linewidth}
+                    \subcaption{Structure conditionnel\label{cod:ifThen}}
+                    \begin{lstlisting}[language=LDA, basicstyle=\small]
+If ("condition booleenne") Then
+   ("action, si condition vrai")
+Else
+   ("action, si condition fausse")
+End If
+                    \end{lstlisting}
+                \end{minipage}
+                \vrule~~
+                \begin{minipage}{0.48\linewidth}
+                    \subcaption{Boucle FOR\_i~et boucle While\label{cod:boucle}}
+                    \begin{lstlisting}[language=LDA, basicstyle=\small]
+For i in start, end, interval do
+   ("action") 
+
+While ("condition booleenne") do
+   ("action")
+                    \end{lstlisting}
+                \end{minipage}
+                \caption{\label{cod:structure}Structure élémentaire de programmation (pseudocode)}
+            \end{code}\par%
+            Dans le pseudocode~\ref{cod:structure}\ref{cod:boucle} est présenté deux structures de boucles parmi les plus classiques: la boucle \textit{FOR\_i} et la boucle \textit{While}. La 1\iere permet de répéter une série d'instruction $n$ fois tout en incrémentant \tiret{à chaque tour de boucle} une variable (couramment nommée \textit{i}) qui lui est associée. La 2\nde, combine une boucle est une structure conditionnelle: ainsi, une série d'instructions est répétée \cro{tant que} (\textit{while}) une condition n'est pas vérifiée, la boucle \textit{while} peut être considérée comme une répétition de l'instruction if. Ce type de boucle a l'inconvénient de pouvoir faire rentrer un algorithme dans une boucle infinie, ne permettant pas la bonne exécution de celui-ci. Chez les novices, ce type d'erreur est souvent considérée comme un bug alors qu'il provient d'une mauvaise programmation.
+        \paragraph{Fonction et procédure}
+            Ce type de structure est assimilable à une macro \cad qu'elle exécute une série d'instructions pré-enregistrées à son appel. Lors de cet appel, un certain nombre de paramètres peut être transmis modifiant ainsi son exécution (notamment via l'utilisation de structures conditionnelles). On peut se servir de ce type de structure pour automatiser des actions ou des calculs. On distingue la fonction de la procédure par le fait qu'elle retourne un résultat, une information, tandis que la procédure ne fait que s'exécuter.  
+        \paragraph{Structure de données}
+             Une structure de données est une manière d'organiser les données pour les traiter plus facilement. Une structure de données est une mise en œuvre concrète d'un type abstrait. Elle a souvent une importance capitale dans la résolution d'un problème, car de cette structure découlera l'ensemble des opérations mises en place pour traiter les données.
+    \subsection{Logique et algorithmique}\label{sec:program-concept}
+        \paragraph{Paradigmes}
+            Il existe différentes façons d'aborder la programmation et chaque paradigme amène sa philosophie: impératif, déclaratif, fonctionnel, logique, orienté objet, concurrent, visuel, événementiel, basé web sont autant de paradigmes de programmation~\citeB{bansal2013introduction}. au fil de leur développement, les scientifiques et les programmeurs ont identifié les avantages et les limitations d'un style de programmation et apporté de nouveaux styles.
+            Un langage peut refléter un ou plusieurs paradigmes afin d'exprimer une solution à un problème de programmation. La plupart des langages permettent aujourd'hui d'adopter plusieurs paradigmes simultanément pour peu qu'ils soient compatibles entre eux.
+            \subparagraph{Paradigme déclaratif}
+                Le paradigme déclaratif se décompose en deux: le paradigme fonctionnel et le paradigme logique. Le 1\ier a pour principe \cro{l'évaluation de formules}, l'objectif étant d'utiliser le résultat d'une première fonction pour résoudre d'autres calculs; il s'appuie sur la récursivité et il a pour modèle le lambda-calcul (plus précisément la réduction en forme normale de tête). % Le paradigme fonctionnel a été introduit par les langages Lisp et ISWIM ainsi qu'en ce qui concerne les fonctions récursives par Algol 60, dans les années 1960.
+                Pour le 2\nd, l'idée est de décrire des prédicats: \cad des déclarations qui, une fois instanciées, peuvent être vraies ou fausses (ou ne pas recevoir de valeur de vérité lorsque l'évaluation du prédicat ne se termine pas) et de constituer ainsi des formules logiques associées à des commandes constituant le programme.
+            \subparagraph{Paradigmes impératif, concurrent et événementiel}
+                Le paradigme impératif (ou procédural) est basé sur le principe de la machine de Von Neumann et de l'exécution étape par étape des instructions; tout comme pour la réalisation d'une recette de cuisine. %Le C, le Pascal, le Fortran et le COBOL sont des exemples de langage de programmation qui implémentent le paradigme impératif
+                Avec l'évolution technologique, un ordinateur est devenu une machine comportant plusieurs processeurs et capable d'effectuer plusieurs tâches simultanément. S'est ainsi développé un autre paradigme: le paradigme concurrentiel. Il introduit les notions de \textit{thread}, d'attente active et d'appel de fonction à distance. Aujourd'hui, il est largement utilisé dans les interfaces graphiques et les applications web.
+                Concernant le paradigme événementiel, malgré son introduction dans le langage Simula dans les années 1970, ce n'est que récemment \tiret{avec l'essor de la programmation concurrentielle} que celui-ci se développe. Alors que pour un programme interactif classique l'action est réalisée en fonction de la réponse donnée à une question posée, en style événementiel, le programme n'attend rien et est exécuté lorsque quelque chose \tiret{de pré-défini} s'est passé. Dans ce paradigme, la programmation consiste uniquement à décrire les actions à prendre en réponse aux événements.
+            \subparagraph{Paradigme orienté objet}
+                Ce paradigme a pour vocation de faciliter le découpage d'un grand programme en plusieurs modules isolés les uns des autres. Il permet d'associer fortement les données avec les procédures.
+                Il définit la notion d'objet: un objet contient les variables et les fonctions en rapport avec un sujet. Il existe une hiérarchie entre eux ce qui permet d'introduire les notions d'ancêtre et d'héritage, notamment un objet contient implicitement les variables et les fonctions de ses ancêtres, et cet héritage aide au découpage et à la réutilisation du code. Populaire depuis les années 1980, il a été introduit avec le langage Simula dans les années 1960 et est aujourd'hui appliqué dans une majorité de langages \eg C++, Java, Python, \etc.
+    \begin{comment}% COM %TODO?
+    \subsection{Théorèmes mathématiques \& Principe de physique}\label{sec:link-concept}
+        \paragraph{logique formel}
+        \paragraph{TAL}\sht{TAL}
+        \paragraph{Probabilité}
+    %\subsection{Principe de physique}
+        \paragraph{électronique, mécatronique}
+        \paragraph{déplacement dans l'espace}
+        \end{comment}
+    \subsection{Design et production}
+        \paragraph{Outils de production}\label{sec:3D_print}
+            \subparagraph{Découpe laser}
+                Ce procédé de fabrication consiste à utiliser une grande quantité d’énergie (générée par un laser) en la concentrant sur une très faible surface pour découper la matière. Cette technologie est majoritairement destinée aux chaînes de production industrielle, mais peut également convenir aux boutiques, aux établissements professionnels et aux tiers-lieux de fabrication comme les \sht{fablab}. Cette méthode permet également de graver la matière (sans la découper) en diminuant la quantité d'énergie fournie
+            \subparagraph{imprimante 3D}
+                L’impression 3D (également appelée fabrication additive) permet de créer des objets en trois dimensions de toutes formes, modélisées avec un ordinateur puis imprimées couche par couche à l’aide d’une machine (plastiques, résines, métaux, céramique, \etc).
+                D'autres techniques existent mais sont moins répandues: la \textit{SLA} (StéréolithographieApparatus), le \textit{DLP} Traitement numérique de la lumière, utilisant des résines photosensibles en font notamment partie.
+                Chaque constructeur d'imprimante propose un format de fichier propre permettant de transcrire les pièces désignées (généralement en \sht{STL}) en instruction pour la machine. 
+                Le \bg{STL} est un format de fichier largement utilisé pour le prototypage rapide, l'impression 3D et la fabrication assistée par ordinateur. Ils sont conçus pour décrire la géométrie de surface d'un objet tridimensionnel.
+        \paragraph{Outils de design}
+            \subparagraph{Conception 3D}
+                Pour générer des pièces 3D, il est nécessaire de disposer d'un outil de conception numérique. Longtemps largement dominée par un logiciel propriétaire (solidworks) la \sbg{CAO} se démocratise aujourd'hui, notamment avec l'arrivée de logiciels directement intégrés au navigateur web (ne nécessitant pas d'installation) comme OpenSCAD ou OnShape mais surtout avec l'arrivée de versions dédiées à l'éducation comme TinkerCAD  ou BlocksCAD~\citeURL{make-3d}, permettant à tout à chacun de créer ses propres conceptions.
+            \subparagraph{Circuit électronique}
+                Tout comme pour la conception 3D, il existe aujourd'hui une grande variété de logiciel disponible pour assister à la conception de \sht{pcb}, de la phase de prototypage jusqu’à l’industrialisation; du logiciel libre destiné aux amateurs de \sht{DIY} aux suites d’outils complexes à plusieurs dizaines de milliers de dollars. On a notamment cité EAGLE et TinkerCAD-Circuit, tous deux issus de la suite de logiciel propriétaire AutoDesk ou encore CircuitMaker, un logiciel Open-Source~\citeURL{make-pcb} Comme pour la \sht{CAO}, la version \textit{circuit} de TinkerCAD est orientée vers un public novice, et propose plusieurs ressources permettant d'appréhender les bases de la conception de circuit imprimé pour développer ses premières réalisations.    
+    \subsection{Robotique}\label{sec:bot-concept}
+        \paragraph{Robot et automate}
+            Comment les distinguer?
+            Un même robot se comportera de manière différente en fonction de son environnement. Le robot dispose de capteurs et ses actions seront décidées par l'intermédiaire de son programme en fonction de l'environnement.
+            On appelle \sbg{BSM} cette alliance: les capteurs détectent l’environnement, le micro-ordinateur analyse ces données et les moteurs exécutent une séquence d’actions adaptées.
+            L'automate, lui, obéit à un programme préétabli, que ce soit de manière mécanique ou électrique. L’automate se comportera toujours de la même façon, qu’importe son environnement: il n’a donc pas de capteurs.  
+        \paragraph{Composants élémentaires}\label{sec:5compo}
+            \subparagraph{Énergie} 
+                La première des composantes d'une machine est sa source d'énergie. Même si, dans un premier temps, cela peut paraître trivial, on se rend vite compte que le type d'énergie sélectionné, et les contraintes qu'il impose, va induire un certain nombre de choix sur les autres composants, bien évidemment, en terme de consommation d'énergie, mais aussi sur la structure ou la puissance nécessaire pour stocker et déplacer cette énergie (typiquement des batteries).
+            \subparagraph{Structure}
+                Cette deuxième, la structure, peut paraître tout aussi triviale, pourtant, tout comme la première, elle se révèle d'une importance capitale. En effet, et nous l'avons vu dans le chapitre~1 \citeS{sec:forme}, la structure va induire plusieurs comportements et autres logiques de programmation qui lui seront propre. Changer cette structure impliquera donc plus que de changer quelques éléments marginaux: il faudra repenser, à minima adapter, une grande partie du code qui le contrôle.
+            \subparagraph{Microcontrôleur}
+                Pour fonctionner, un robot doit exécuter une suite d'instructions, bien souvent, ce code source est stocké sur un support externe (sauf dans le cas des créatures de Theo Jansen~\citeF{fig:bot_patte}). Ce support représente le 3\ieme composant élémentaire, il peut être extrêmement basique ou plus complexe comme avec Arduino ou même prendre les traits d'un ordinateur à part entière telle une Raspberry~Pi. Ce microcontrôleur permet d'envoyer les instructions aux moteurs et d'intégrer les informations captées depuis l'environnement pour les associer au sein d'une \sht{BSM}.
+            \subparagraph{Capteurs}
+                L'environnement est riche de signaux pouvant être captés, et l'homme n'en perçoit qu'une partie. Une capteur couramment utilisé est un capteur de proximité \sbg{lidar}, son principe de fonctionnement est similaire à celui du radar (écolocalisation\footnote{consiste à envoyer des sons et à écouter leur écho pour se localiser}) mais, lui, exploite la lumière et notamment, par commodité, la lumière infrarouge (ou ultraviolet) hors du spectre visible. Bien d'autres capteurs existent, capteur de pression, de son, de température, \etc et prennent la forme de dispositifs plus ou moins modulables comme un simple clavier ou une webcam; une kinect; un leapmotion; ou encore une photoressistance directement insérable sur le microcontrôleur. Microcontrôleur qui, en fonction des valeurs reçues et du programme qu'il contient pourra adapter son comportement.
+            \subparagraph{Effecteurs}
+                Pour agir sur le monde, il faut disposer de moyens physiques pour le modifier. Un phare projetant sa lumière, une radio produisant un son, un muscle déployant sa force, ou un moteur pivotant sur son axe sont autant de moyens d'exercer une action sur le monde. Le choix des effecteurs composant un robot est fait en fonction du but qu'il doit accomplir au regard des différentes contraintes qu'il doit respecter et des capacités à sa disposition.
+        \paragraph{Comportement}
+            Le comportement d'un robot est observable au travers des actions qu'il produit. Ces actions sont sélectionnées par son code source en fonction de l'environnement qu'il perçoit. Cependant, ce comportement n'est pas réductible à ce seul code source plongé dans un environnement: Connaître le code et l'environnement ne permet pas de déterminer précisément le comportement qui sera produit mais simplement de l'estimer. Ce comportement émerge de l'interaction interne de tous les composants élémentaires du robot ajouté à l'environnement externe dans lequel il est placé. 
+\section{Les sciences du numérique}\label{sec:num-concept}
+    \subsection{L'objet numérique}
+        \citeAtion{num2}
+        %L’impact considérable de l’informatique dans un nombre toujours croissant de domaines de l’industrie, de la communication, des loisirs, de la culture, de la santé, des sciences et de la société en général est universellement reconnu. On parle désormais d’un«monde numérique» au sens large, qui s’appuie sur deux grands leviers, celui des matériels informatiques et celui de la science informatique.
+        Les sciences et les technologies du numérique n'ont cessé de progresser en synergie depuis un demi-siècle, transformant notre société.
+        \citeAtion{num}
+        %Une partie des objets autrefois tangibles, tels que les photos, les correspondances, les films et les musiques est aujourd’hui démocratisée sous forme numérique. Peut-on pour autant parler d’objets numériques ? Est-il possible de se les approprier ? Si oui, par quel(s) processus ? 
+        Au niveau de la formation initiale et tout au long de la vie, une culture scientifique et technique collective importante est nécessaire pour maîtriser et non subir cette mutation numérique.
+        Pour cela, la médiation scientifique est un enjeu majeur, en présentiel ou en ligne. Cette démarche de médiation permet à chacune et chacun d'acquérir la culture scientifique suffisante pour comprendre les fondements de cette société numérique et pouvoir ainsi contribuer à la mutation de la société.
+    \paragraph{En pratique}
+        On peut distinguer trois niveaux de compréhension de l'objet numérique.
+        \Li un niveau superficiel basé sur les usages et la capacité d'interagir avec la technologie \eg utiliser un smart-phone, naviguer sur le web, posséder un compte sur les réseaux sociaux, \etc; \ii un niveau intermédiaire de compréhension des enjeux éthiques et sociétaux, il témoigne d'une certaine prise de recul sur les usages et ce qu'ils impliquent \eg exploitation des traces de navigation (cookies), algorithme de sélection des \cro{fils d'actu}, piratage et falsification d'informations, \etc; et \iii un niveau profond caractérisé par la compréhension des mécanismes internes \eg capacité à lire du code, connaître les outils, leurs fonctionnalités, leurs limites, \etc. Un 4\ieme niveau pourrait être posé, représentant la population dite \cro{experte}, professionnelle du domaine.\nocite{atlan2019apprentissage}

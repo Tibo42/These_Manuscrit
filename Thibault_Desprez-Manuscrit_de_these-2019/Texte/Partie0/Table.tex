@@ -1,0 +1,33 @@
+\toPrint
+\fancyhead[\locHead]{\textsc{Table des abréviations}}
+%\fancyhead[\draft]{\textcolor{red}{\textsc{Version De Travail}}}%REMOVE
+%abreviation
+\afterpage{
+\phantomsection\pdfbookmark[section]{Table des abr\'eviations}{loabr}}
+\setglossarystyle{mystyleAcr}
+%\printnoidxglossaries[type=\acronymtype,title=Table des abr\'eviations]
+\printglossary[type=\acronymtype,title=Table des abr\'eviations]
+\toPrint\fancyhead[\locHead]{\textsc{Table des citations}}
+%citation
+\afterpage{\phantomsection\pdfbookmark[section]{Table des citations}{locit}}
+\setglossarystyle{mystyleCit}
+%\printnoidxglossaries[type=citation,,title=Table des citations]
+\printglossary[type=citation,title=Table des citations]
+\toPrint\fancyhead[\locHead]{\textsc{Table des figures}}
+%figure
+\afterpage{\phantomsection\pdfbookmark[section]{Table des figures}{lofig}}
+\listoffigures
+\toPrint\fancyhead[\locHead]{\textsc{Table des tableaux}}
+%tableau
+\afterpage{\phantomsection\pdfbookmark[section]{Table des tableaux}{lotab}}
+\renewcommand{\listtablename}{Table des tableaux}
+\listoftables
+\toPrint\fancyhead[\locHead]{\textsc{Table des programmes}}
+%code
+\afterpage{\phantomsection\pdfbookmark[section]{Table des programmes}{locod}}
+\listof{code}{Table des programmes}
+\toPrint\fancyhead[\locHead]{\textsc{Table des matières}}
+%matiere
+\afterpage{\pdfbookmark[section]{\contentsname}{contents}}
+\tableofcontents
+\afterpage{\pagestyle{empty}}
